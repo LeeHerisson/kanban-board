@@ -1,7 +1,11 @@
+import Board from "../Board/Board";
+import Toolbar from "../Toolbar/Toolbar";
+
 const Kanban = () => {
   return (
     <>
-      <p>Kanban</p>
+      <Toolbar />
+      <Board />
     </>
   );
 };

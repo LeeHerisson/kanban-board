@@ -1,0 +1,13 @@
+.form {
+  display: flex;
+  column-gap: var(--space-4);
+  width: 100%;
+}
+
+.field {
+  width: 100%;
+}
+
+.date {
+  width: 200px;
+}
