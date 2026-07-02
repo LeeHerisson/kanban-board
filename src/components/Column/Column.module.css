@@ -30,15 +30,15 @@
 }
 
 .cardList {
-  --todoListRowGap: 8px;
+  --cardListRowGap: 12px;
 
   display: grid;
   align-content: start;
   flex: 1;
-  padding: var(--space-3);
+  padding: var(--space-4);
   background-color: var(--color-surface);
   border: var(--border);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  row-gap: var(--todoListRowGap);
+  row-gap: var(--cardListRowGap);
 }
