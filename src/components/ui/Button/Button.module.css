@@ -4,13 +4,13 @@
   align-items: center;
   height: var(--input-height);
   padding: var(--space-3);
-  color: var(--color-gray-1);
-  background-color: var(--color-dark-2);
-  border: var(--border-width) solid var(--color-dark-2);
+  color: var(--color-on-accent);
+  background-color: var(--color-accent);
+  border: var(--border-width) solid var(--color-accent);
   border-radius: var(--border-radius);
 
   &:hover {
-    color: var(--color-dark-2);
+    color: var(--color-accent);
     background-color: transparent;
   }
 

@@ -1,11 +1,16 @@
 body {
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: stretch;
   min-height: 100vh;
   padding: 50px 30px;
   font-family: "Inter", sans-serif;
-  background-color: var(--color-gray-1);
+  background-color: var(--color-page);
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
 }
 
 input,
@@ -15,7 +20,7 @@ button {
 }
 
 :focus-visible {
-  outline: 2px dashed var(--color-black);
+  outline: 2px dashed var(--color-text);
   outline-offset: 4px;
   transition-duration: 0s !important;
 }

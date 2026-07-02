@@ -1,0 +1,44 @@
+.column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  row-gap: var(--space-3);
+}
+
+.columnInfo {
+  display: flex;
+  align-items: center;
+  column-gap: var(--space-2);
+  color: var(--color-heading);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tasksCount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 22px;
+  height: 22px;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  background-color: var(--color-border);
+  border-radius: var(--border-radius-count);
+}
+
+.cardList {
+  --todoListRowGap: 8px;
+
+  display: grid;
+  align-content: start;
+  flex: 1;
+  padding: var(--space-3);
+  background-color: var(--color-surface);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  row-gap: var(--todoListRowGap);
+}

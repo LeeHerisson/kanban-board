@@ -1,4 +1,5 @@
 :root {
+  /* Primitives — сырые значения палитры, напрямую в компонентах не используем */
   --color-white: #ffffff;
   --color-black: #000000;
 
@@ -10,9 +11,26 @@
   --color-gray-3: #b3b3b3;
   --color-gray-4: #757575;
 
+  --color-red: #e5484d;
+
+  /* Semantic — намерение, а не значение; компоненты ссылаются сюда */
+  --color-page: var(--color-gray-1);
+  --color-surface: var(--color-white);
+  --color-surface-muted: var(--color-gray-1);
+  --color-text: var(--color-black);
+  --color-heading: var(--color-dark-2);
+  --color-text-muted: var(--color-gray-4);
+  --color-placeholder: var(--color-gray-3);
+  --color-border: var(--color-gray-2);
+  --color-accent: var(--color-dark-2);
+  --color-accent-hover: var(--color-dark-1);
+  --color-on-accent: var(--color-gray-1);
+  --color-danger: var(--color-red);
+
   --border-width: 1px;
-  --border: var(--border-width) solid var(--color-gray-2);
+  --border: var(--border-width) solid var(--color-border);
   --border-radius: 8px;
+  --border-radius-count: 50%;
 
   --space-1: 4px;
   --space-2: 8px;

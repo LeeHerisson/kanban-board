@@ -1,0 +1,98 @@
+.card {
+  display: flex;
+  align-items: center;
+  column-gap: var(--space-3);
+  padding-left: 10px;
+  border: var(--border);
+  border-radius: var(--border-radius);
+
+  &:hover {
+    background-color: var(--color-surface-muted);
+  }
+
+  &:has(.cardCheckbox:checked) .cardLabel {
+    color: var(--color-text-muted);
+    text-decoration: line-through;
+  }
+}
+
+.cardCheckbox {
+  flex-shrink: 0;
+  appearance: none;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: var(--border-width) solid var(--color-text-muted);
+  border-radius: 4px;
+
+  &:checked {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  &:not(:checked)::after {
+    opacity: 0;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 16px;
+    height: 16px;
+    background: url("../../assets/icons/icon-check_white.svg") center/contain
+      no-repeat;
+  }
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  row-gap: var(--space-1);
+  padding: var(--space-2);
+}
+
+.cardDate {
+  display: inline-flex;
+  align-items: center;
+  column-gap: var(--space-1);
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.cardDateOverdue {
+  color: var(--color-danger);
+}
+
+.cardDeleteButton {
+  flex-shrink: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  margin-left: auto;
+  padding: 0;
+  color: var(--color-text-muted);
+  background-color: transparent;
+  border: none;
+  border-radius: inherit;
+
+  &:hover {
+    color: var(--color-surface);
+    background-color: var(--color-accent-hover);
+  }
+
+  &:active {
+    scale: 1.05;
+  }
+
+  * {
+    pointer-events: none;
+  }
+}

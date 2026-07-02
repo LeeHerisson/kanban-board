@@ -1,0 +1,7 @@
+.board {
+  display: flex;
+  align-items: stretch;
+  column-gap: var(--space-5);
+  width: 100%;
+  flex: 1;
+}

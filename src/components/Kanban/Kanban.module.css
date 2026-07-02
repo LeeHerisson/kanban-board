@@ -1,0 +1,7 @@
+.kanban {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 1110px;
+  row-gap: var(--space-5);
+}
