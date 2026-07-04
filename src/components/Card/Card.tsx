@@ -1,20 +1,43 @@
 import styles from "./Card.module.css";
 
-const Card = (props) => {
-  const { className = "", id, title, dueDate, isOverdue = false } = props;
+type CardProps = {
+  className?: string;
+  id: string;
+  title: string;
+  isDone: boolean;
+  dueDate: string | null;
+  onDeleteTaskButtonClick: (id: string) => void;
+};
+
+const Card = (props: CardProps) => {
+  const {
+    className = "",
+    id,
+    title,
+    dueDate,
+    isDone,
+    onDeleteTaskButtonClick,
+  } = props;
 
   return (
     <li className={`${styles.card} ${className}`}>
-      <input className={styles.cardCheckbox} type="checkbox" id={id} />
+      <input
+        className={styles.cardCheckbox}
+        type="checkbox"
+        id={id}
+        defaultChecked={isDone}
+      />
       <div className={styles.cardBody}>
         <label className={styles.cardLabel} htmlFor={id}>
           {title}
         </label>
         {dueDate && (
           <p
-            className={`${styles.cardDate} ${
+            className={
+              `${styles.cardDate} ` /* ${
               isOverdue ? styles.cardDateOverdue : ""
-            }`}
+            }*/
+            }
           >
             <svg
               width="14"
@@ -38,6 +61,7 @@ const Card = (props) => {
         className={styles.cardDeleteButton}
         aria-label="Delete"
         title="Delete"
+        onClick={() => onDeleteTaskButtonClick(id)}
       >
         <svg
           width="20"

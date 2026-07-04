@@ -6,6 +6,8 @@ type FieldProps = {
   id?: string;
   type?: "text" | "date" | "search";
   label: string;
+  value?: string;
+  onChange?: React.FormEventHandler<HTMLInputElement>;
 };
 
 const Field = (props: FieldProps) => {
@@ -15,6 +17,8 @@ const Field = (props: FieldProps) => {
     id,
     type = "text",
     label,
+    value,
+    onChange,
   } = props;
 
   return (
@@ -26,6 +30,8 @@ const Field = (props: FieldProps) => {
         className={styles.input}
         type={type}
         id={id}
+        value={value}
+        onChange={onChange}
         placeholder=" "
         autoComplete="off"
       />

@@ -1,27 +1,41 @@
 import styles from "./Board.module.css";
+import { columns } from "../../constant/columns";
+import type { Task } from "../../types/types";
+
 import Column from "../Column/Column";
 import Card from "../Card/Card";
 
-const Board = () => {
+type BoardProps = {
+  tasks: Task[];
+  onDeleteTaskButtonClick: (id: string) => void;
+};
+
+const Board = (props: BoardProps) => {
+  const { tasks, onDeleteTaskButtonClick } = props;
+
   return (
     <div className={styles.board}>
-      <Column columnName="To Do" tasksCount="3">
-        <Card id="task-1" title="Design onboarding flow" dueDate="Jul 3" />
-        <Card
-          id="task-2"
-          title="Write API documentation"
-          dueDate="Jun 28"
-          isOverdue
-        />
-        <Card id="task-3" title="Q2 metrics report" />
-      </Column>
-      <Column columnName="In Progress" tasksCount="2">
-        <Card id="task-4" title="Refactor auth module" dueDate="Jul 6" />
-        <Card id="task-5" title="User research interviews" dueDate="Jul 1" />
-      </Column>
-      <Column columnName="Done" tasksCount="1">
-        <Card id="task-6" title="Set up CI pipeline" dueDate="Jun 25" />
-      </Column>
+      {columns.map((column) => {
+        const columnTasks = tasks.filter(
+          (task) => task.status === column.status,
+        );
+
+        return (
+          <Column
+            key={column.status}
+            title={column.title}
+            count={columnTasks.length}
+          >
+            {columnTasks.map((task) => (
+              <Card
+                key={task.id}
+                {...task}
+                onDeleteTaskButtonClick={onDeleteTaskButtonClick}
+              />
+            ))}
+          </Column>
+        );
+      })}
     </div>
   );
 };

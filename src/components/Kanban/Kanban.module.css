@@ -2,6 +2,6 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  min-width: 1110px;
+  min-width: 1200px;
   row-gap: var(--space-5);
 }
