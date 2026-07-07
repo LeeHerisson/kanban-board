@@ -7,11 +7,11 @@ import Card from "../Card/Card";
 
 type BoardProps = {
   tasks: Task[];
-  onDeleteTaskButtonClick: (id: string) => void;
+  onDeleteTask: (id: string) => void;
 };
 
 const Board = (props: BoardProps) => {
-  const { tasks, onDeleteTaskButtonClick } = props;
+  const { tasks, onDeleteTask } = props;
 
   return (
     <div className={styles.board}>
@@ -30,7 +30,7 @@ const Board = (props: BoardProps) => {
               <Card
                 key={task.id}
                 {...task}
-                onDeleteTaskButtonClick={onDeleteTaskButtonClick}
+                onDeleteTaskButtonClick={onDeleteTask}
               />
             ))}
           </Column>

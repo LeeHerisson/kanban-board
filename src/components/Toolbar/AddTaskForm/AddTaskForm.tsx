@@ -4,12 +4,20 @@ import Field from "../../ui/Field/Field";
 
 type AddTaskFormProps = {
   addTask: () => void;
+  newTaskDate: string;
+  setNewTaskDate: React.Dispatch<React.SetStateAction<string>>;
   newTaskTitle: string;
   setNewTaskTitle: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const AddTaskForm = (props: AddTaskFormProps) => {
-  const { addTask, newTaskTitle, setNewTaskTitle } = props;
+  const {
+    addTask,
+    newTaskDate,
+    setNewTaskDate,
+    newTaskTitle,
+    setNewTaskTitle,
+  } = props;
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -33,7 +41,10 @@ const AddTaskForm = (props: AddTaskFormProps) => {
         id="choose-date"
         label="Choose date"
         type="date"
-        value=""
+        value={newTaskDate}
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+          setNewTaskDate(event.target.value)
+        }
       />
 
       <Button type="submit">Add</Button>
