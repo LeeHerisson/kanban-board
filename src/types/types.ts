@@ -4,7 +4,8 @@ export interface Task {
   id: string;
   title: string;
   isDone: boolean;
-  dueDate: string | null;
+  date: string | null;
+  isOverdue?: boolean;
   status: TaskStatus;
 }
 

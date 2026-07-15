@@ -1,3 +1,4 @@
+import { formatDate } from "../../utils/date";
 import styles from "./Card.module.css";
 
 type CardProps = {
@@ -5,7 +6,7 @@ type CardProps = {
   id: string;
   title: string;
   isDone: boolean;
-  dueDate: string | null;
+  date: string | null;
   onDeleteTaskButtonClick: (id: string) => void;
 };
 
@@ -14,7 +15,7 @@ const Card = (props: CardProps) => {
     className = "",
     id,
     title,
-    dueDate,
+    date,
     isDone,
     onDeleteTaskButtonClick,
   } = props;
@@ -31,14 +32,8 @@ const Card = (props: CardProps) => {
         <label className={styles.cardLabel} htmlFor={id}>
           {title}
         </label>
-        {dueDate && (
-          <p
-            className={
-              `${styles.cardDate} ` /* ${
-              isOverdue ? styles.cardDateOverdue : ""
-            }*/
-            }
-          >
+        {date && (
+          <p className={styles.cardDate}>
             <svg
               width="14"
               height="14"
@@ -53,7 +48,7 @@ const Card = (props: CardProps) => {
               <rect x="3" y="4" width="18" height="18" rx="2" />
               <path d="M3 10h18M8 2v4M16 2v4" />
             </svg>
-            {dueDate}
+            {formatDate(date)}
           </p>
         )}
       </div>
