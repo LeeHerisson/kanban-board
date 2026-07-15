@@ -7,7 +7,7 @@ import { INITIAL_COLUMNS, INITIAL_TASKS } from "./Kanban.mocks";
 
 const Kanban = () => {
   const [tasks, setTasks] = useState(INITIAL_TASKS);
-  const [columns, setColumns] = useState(INITIAL_COLUMNS);
+  const [columns] = useState(INITIAL_COLUMNS);
 
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const [newTaskDate, setNewTaskDate] = useState("");
