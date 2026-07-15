@@ -1,18 +1,17 @@
 import styles from "./Board.module.css";
-import { columns } from "../../constant/columns";
-import type { Task } from "../../types/types";
-
+import type { Column as ColumnType, Task } from "../../types/types";
 import Column from "../Column/Column";
 import Card from "../Card/Card";
 
 type BoardProps = {
   tasks: Task[];
+  columns: ColumnType[];
   onDeleteTask: (id: string) => void;
   onToggleTask: (id: string) => void;
 };
 
 const Board = (props: BoardProps) => {
-  const { tasks, onDeleteTask, onToggleTask } = props;
+  const { tasks, columns, onDeleteTask, onToggleTask } = props;
 
   return (
     <div className={styles.board}>

@@ -3,46 +3,11 @@ import type { Task } from "../../types/types";
 import { useState } from "react";
 import Board from "../Board/Board";
 import Toolbar from "../Toolbar/Toolbar";
+import { INITIAL_COLUMNS, INITIAL_TASKS } from "./Kanban.mocks";
 
 const Kanban = () => {
-  const [tasks, setTasks] = useState<Task[]>([
-    {
-      id: "task-1",
-      title: "Design onboarding flow",
-      date: "2026-07-03",
-      status: "todo",
-    },
-    {
-      id: "task-2",
-      title: "Write API documentation",
-      date: "2026-06-28",
-      status: "todo",
-    },
-    {
-      id: "task-3",
-      title: "Q2 metrics report",
-      date: null,
-      status: "todo",
-    },
-    {
-      id: "task-4",
-      title: "Refactor auth module",
-      date: "2026-07-06",
-      status: "in-progress",
-    },
-    {
-      id: "task-5",
-      title: "User research interviews",
-      date: "2026-07-01",
-      status: "in-progress",
-    },
-    {
-      id: "task-6",
-      title: "Set up CI pipeline",
-      date: "2026-06-25",
-      status: "done",
-    },
-  ]);
+  const [tasks, setTasks] = useState(INITIAL_TASKS);
+  const [columns, setColumns] = useState(INITIAL_COLUMNS);
 
   const [newTaskTitle, setNewTaskTitle] = useState("");
   const [newTaskDate, setNewTaskDate] = useState("");
@@ -56,6 +21,7 @@ const Kanban = () => {
       id: crypto?.randomUUID() ?? Date.now().toString(),
       title: newTaskTitle,
       date: newTaskDate,
+      isOverdue: false,
       status: "todo",
     };
 
@@ -87,6 +53,7 @@ const Kanban = () => {
       />
       <Board
         tasks={tasks}
+        columns={columns}
         onDeleteTask={deleteTask}
         onToggleTask={toggleTask}
       />
