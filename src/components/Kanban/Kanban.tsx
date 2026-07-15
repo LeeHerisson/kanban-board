@@ -9,6 +9,8 @@ const Kanban = () => {
   const [tasks, setTasks] = useState(INITIAL_TASKS);
   const [columns] = useState(INITIAL_COLUMNS);
 
+  const [searchQuery, setSearchQuery] = useState("");
+
   const addTask = (title: string, date: string | null) => {
     if (!title.trim()) {
       return;
@@ -28,7 +30,9 @@ const Kanban = () => {
   const toggleTask = (taskId: string) => {
     setTasks((prev) =>
       prev.map((task) =>
-        task.id === taskId ? { ...task, status: "done" } : task,
+        task.id === taskId
+          ? { ...task, status: task.status === "done" ? "todo" : "done" }
+          : task,
       ),
     );
   };
@@ -37,11 +41,15 @@ const Kanban = () => {
     setTasks((prev) => prev.filter((task) => task.id !== taskId));
   };
 
+  const visibleTasks = tasks.filter((task) =>
+    task.title.toLowerCase().includes(searchQuery.trim().toLowerCase()),
+  );
+
   return (
     <div className={styles.kanban}>
-      <Toolbar addTask={addTask} />
+      <Toolbar addTask={addTask} onSearch={setSearchQuery} />
       <Board
-        tasks={tasks}
+        tasks={visibleTasks}
         columns={columns}
         onDeleteTask={deleteTask}
         onToggleTask={toggleTask}
