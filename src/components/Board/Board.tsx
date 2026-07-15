@@ -8,10 +8,11 @@ import Card from "../Card/Card";
 type BoardProps = {
   tasks: Task[];
   onDeleteTask: (id: string) => void;
+  onToggleTask: (id: string) => void;
 };
 
 const Board = (props: BoardProps) => {
-  const { tasks, onDeleteTask } = props;
+  const { tasks, onDeleteTask, onToggleTask } = props;
 
   return (
     <div className={styles.board}>
@@ -28,9 +29,11 @@ const Board = (props: BoardProps) => {
           >
             {columnTasks.map((task) => (
               <Card
+                columnStatus={column.status}
                 key={task.id}
                 {...task}
-                onDeleteTaskButtonClick={onDeleteTask}
+                onDeleteTask={onDeleteTask}
+                onToggleTask={onToggleTask}
               />
             ))}
           </Column>

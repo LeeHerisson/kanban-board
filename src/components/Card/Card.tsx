@@ -3,21 +3,23 @@ import styles from "./Card.module.css";
 
 type CardProps = {
   className?: string;
+  columnStatus: string;
   id: string;
   title: string;
-  isDone: boolean;
   date: string | null;
-  onDeleteTaskButtonClick: (id: string) => void;
+  onDeleteTask: (id: string) => void;
+  onToggleTask: (id: string) => void;
 };
 
 const Card = (props: CardProps) => {
   const {
     className = "",
+    columnStatus,
     id,
     title,
     date,
-    isDone,
-    onDeleteTaskButtonClick,
+    onDeleteTask,
+    onToggleTask,
   } = props;
 
   return (
@@ -26,7 +28,8 @@ const Card = (props: CardProps) => {
         className={styles.cardCheckbox}
         type="checkbox"
         id={id}
-        defaultChecked={isDone}
+        checked={columnStatus === "done"}
+        onChange={() => onToggleTask(id)}
       />
       <div className={styles.cardBody}>
         <label className={styles.cardLabel} htmlFor={id}>
@@ -56,7 +59,7 @@ const Card = (props: CardProps) => {
         className={styles.cardDeleteButton}
         aria-label="Delete"
         title="Delete"
-        onClick={() => onDeleteTaskButtonClick(id)}
+        onClick={() => onDeleteTask(id)}
       >
         <svg
           width="20"

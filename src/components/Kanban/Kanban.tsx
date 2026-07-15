@@ -11,42 +11,36 @@ const Kanban = () => {
       title: "Design onboarding flow",
       date: "2026-07-03",
       status: "todo",
-      isDone: false,
     },
     {
       id: "task-2",
       title: "Write API documentation",
       date: "2026-06-28",
       status: "todo",
-      isDone: false,
     },
     {
       id: "task-3",
       title: "Q2 metrics report",
       date: null,
       status: "todo",
-      isDone: false,
     },
     {
       id: "task-4",
       title: "Refactor auth module",
       date: "2026-07-06",
       status: "in-progress",
-      isDone: false,
     },
     {
       id: "task-5",
       title: "User research interviews",
       date: "2026-07-01",
       status: "in-progress",
-      isDone: false,
     },
     {
       id: "task-6",
       title: "Set up CI pipeline",
       date: "2026-06-25",
       status: "done",
-      isDone: true,
     },
   ]);
 
@@ -61,7 +55,6 @@ const Kanban = () => {
     const newTask: Task = {
       id: crypto?.randomUUID() ?? Date.now().toString(),
       title: newTaskTitle,
-      isDone: false,
       date: newTaskDate,
       status: "todo",
     };
@@ -71,8 +64,16 @@ const Kanban = () => {
     setNewTaskDate("");
   };
 
+  const toggleTask = (taskId: string) => {
+    setTasks((prev) =>
+      prev.map((task) =>
+        task.id === taskId ? { ...task, status: "done" } : task,
+      ),
+    );
+  };
+
   const deleteTask = (taskId: string) => {
-    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+    setTasks((prev) => prev.filter((task) => task.id !== taskId));
   };
 
   return (
@@ -84,7 +85,11 @@ const Kanban = () => {
         newTaskTitle={newTaskTitle}
         setNewTaskTitle={setNewTaskTitle}
       />
-      <Board tasks={tasks} onDeleteTask={deleteTask} />
+      <Board
+        tasks={tasks}
+        onDeleteTask={deleteTask}
+        onToggleTask={toggleTask}
+      />
     </div>
   );
 };

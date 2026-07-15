@@ -3,7 +3,6 @@ export type TaskStatus = "todo" | "in-progress" | "done";
 export interface Task {
   id: string;
   title: string;
-  isDone: boolean;
   date: string | null;
   isOverdue?: boolean;
   status: TaskStatus;
