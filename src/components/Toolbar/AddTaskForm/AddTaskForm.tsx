@@ -1,27 +1,23 @@
 import styles from "./AddTaskForm.module.css";
 import Button from "../../ui/Button/Button";
 import Field from "../../ui/Field/Field";
+import { useState } from "react";
 
 type AddTaskFormProps = {
-  addTask: () => void;
-  newTaskDate: string;
-  setNewTaskDate: React.Dispatch<React.SetStateAction<string>>;
-  newTaskTitle: string;
-  setNewTaskTitle: React.Dispatch<React.SetStateAction<string>>;
+  addTask: (title: string, date: string | null) => void;
 };
 
 const AddTaskForm = (props: AddTaskFormProps) => {
-  const {
-    addTask,
-    newTaskDate,
-    setNewTaskDate,
-    newTaskTitle,
-    setNewTaskTitle,
-  } = props;
+  const { addTask } = props;
+
+  const [newTaskTitle, setNewTaskTitle] = useState("");
+  const [newTaskDate, setNewTaskDate] = useState("");
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    addTask();
+    addTask(newTaskTitle, newTaskDate);
+    setNewTaskTitle("");
+    setNewTaskDate("");
   };
 
   return (

@@ -9,25 +9,20 @@ const Kanban = () => {
   const [tasks, setTasks] = useState(INITIAL_TASKS);
   const [columns] = useState(INITIAL_COLUMNS);
 
-  const [newTaskTitle, setNewTaskTitle] = useState("");
-  const [newTaskDate, setNewTaskDate] = useState("");
-
-  const addTask = () => {
-    if (!newTaskTitle.trim()) {
+  const addTask = (title: string, date: string | null) => {
+    if (!title.trim()) {
       return;
     }
 
     const newTask: Task = {
       id: crypto?.randomUUID() ?? Date.now().toString(),
-      title: newTaskTitle,
-      date: newTaskDate,
+      title: title,
+      date: date,
       isOverdue: false,
       status: "todo",
     };
 
     setTasks((prevTasks) => [...prevTasks, newTask]);
-    setNewTaskTitle("");
-    setNewTaskDate("");
   };
 
   const toggleTask = (taskId: string) => {
@@ -44,13 +39,7 @@ const Kanban = () => {
 
   return (
     <div className={styles.kanban}>
-      <Toolbar
-        addTask={addTask}
-        newTaskDate={newTaskDate}
-        setNewTaskDate={setNewTaskDate}
-        newTaskTitle={newTaskTitle}
-        setNewTaskTitle={setNewTaskTitle}
-      />
+      <Toolbar addTask={addTask} />
       <Board
         tasks={tasks}
         columns={columns}
