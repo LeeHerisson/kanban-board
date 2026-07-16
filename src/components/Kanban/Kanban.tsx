@@ -19,7 +19,7 @@ const Kanban = () => {
     const newTask: Task = {
       id: crypto?.randomUUID() ?? Date.now().toString(),
       title: title,
-      date: date,
+      dueDate: date,
       isOverdue: false,
       status: "todo",
     };

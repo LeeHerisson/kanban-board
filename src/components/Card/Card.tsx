@@ -6,7 +6,7 @@ type CardProps = {
   columnStatus: string;
   id: string;
   title: string;
-  date: string | null;
+  dueDate: string | null;
   onDeleteTask: (id: string) => void;
   onToggleTask: (id: string) => void;
 };
@@ -17,7 +17,7 @@ const Card = (props: CardProps) => {
     columnStatus,
     id,
     title,
-    date,
+    dueDate,
     onDeleteTask,
     onToggleTask,
   } = props;
@@ -35,7 +35,7 @@ const Card = (props: CardProps) => {
         <label className={styles.cardLabel} htmlFor={id}>
           {title}
         </label>
-        {date && (
+        {dueDate && (
           <p className={styles.cardDate}>
             <svg
               width="18"
@@ -51,7 +51,7 @@ const Card = (props: CardProps) => {
               <rect x="3" y="4" width="18" height="18" rx="2" />
               <path d="M3 10h18M8 2v4M16 2v4" />
             </svg>
-            {formatDate(date)}
+            {formatDate(dueDate)}
           </p>
         )}
       </div>
